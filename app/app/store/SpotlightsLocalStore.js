@@ -27,7 +27,8 @@ Ext.define('MyApp.store.SpotlightsLocalStore', {
                 'Chennai',
                 'Height:6\'2, Weight: 75 Kgs',
                 'Rank:#1',
-                './images/player-a.png'
+                './images/player-a.png',
+                'http://google.com'
             ],
             [
                 'William Smith',
@@ -35,7 +36,8 @@ Ext.define('MyApp.store.SpotlightsLocalStore', {
                 'Bangalore',
                 'Height:6\'4, Weight: 85 Kgs',
                 'Rank:#3',
-                './images/player-b.png'
+                './images/player-b.png',
+                'http://google.com'
             ]
         ],
         model: 'MyApp.model.Spotlight',

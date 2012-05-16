@@ -24,7 +24,7 @@ Ext.define('MyApp.view.SpotlightPanel', {
         items: [
             {
                 xtype: 'panel',
-                height: 309,
+                height: 323,
                 margin: '5 0 0 0 ',
                 style: 'background-color:lightyellow;border:2px solid gray;border-radius:20px;text-align:center;color:gray;font-weight:bold;font-size:12px;',
                 width: 307,
@@ -74,6 +74,14 @@ Ext.define('MyApp.view.SpotlightPanel', {
                         ui: '',
                         width: 198,
                         src: './images/icon200.png'
+                    },
+                    {
+                        xtype: 'button',
+                        id: 'profile_link',
+                        margin: '0 0 5 0',
+                        style: 'font-style:italic;font-weight:lighter',
+                        ui: 'action-round',
+                        text: 'Click here to view this player\'s bownce profile'
                     }
                 ]
             }

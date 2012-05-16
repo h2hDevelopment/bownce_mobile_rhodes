@@ -2,7 +2,7 @@ sdk: "/Users/karthik/workspace/rhodes-320b7"
 sdkversion: 3.2.0
 name: Bownce H2H
 version: 1.0
-vendor: rhomobile
+vendor: H2H Media LLC
 build: debug
 bbver: 4.6
 wmsdk: "Windows Mobile 6 Professional SDK (ARMV4I)"
@@ -10,10 +10,10 @@ applog: rholog.txt
 iphone:
   configuration: Release
   sdk: iphonesimulator5.1
-  provisionprofile:
-  codesignidentity:
+  provisionprofile: 9B4F39A0-C7D1-4EB7-AA8B-8FD0F158EAF7
+  codesignidentity: "iPhone Distribution: H2H Media LLC"
   entitlements:
-  BundleIdentifier: com.bownce.app
+  BundleIdentifier: tv.h2h.bownce
   BundleURLScheme: bownce
 wp:
   productid: 'ba1f32c0-80b1-012f-5b11-60c5470696ac'

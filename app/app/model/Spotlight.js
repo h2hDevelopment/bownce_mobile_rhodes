@@ -34,6 +34,9 @@ Ext.define('MyApp.model.Spotlight', {
             },
             {
                 name: 'player_image_url'
+            },
+            {
+                name: 'player_profile_url'
             }
         ]
     }

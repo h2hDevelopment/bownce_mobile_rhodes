@@ -23,6 +23,9 @@ Ext.define('MyApp.controller.SpotlightsController', {
         control: {
             "#spotlight_pages": {
                 initialize: 'onCarouselInitialize'
+            },
+            "#profile_link": {
+                tap: 'onProfileLinkTap'
             }
         }
     },
@@ -39,6 +42,20 @@ Ext.define('MyApp.controller.SpotlightsController', {
             spotlightPanel.down("#player_image_url").setSrc(spotlightsStore.getAt(i).get('player_image_url'));
             this.getSpotlightPages().add([spotlightPanel]);
         }
+    },
+
+    onProfileLinkTap: function(button, e, options) {
+        var record_index = this.getSpotlightPages().getActiveIndex();
+        if (record_index < 0) {
+            return;
+        }
+        var spotlightsStore = Ext.data.StoreManager.lookup('SpotlightsStore');
+        var url = spotlightsStore.getAt(record_index).get("player_profile_url");
+        if (url.indexOf("?") > 0)
+        url += "&";
+        else
+        url += "?";
+        window.open(url + "rho_open_target=_blank");
     }
 
 });
