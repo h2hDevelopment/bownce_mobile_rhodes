@@ -49,7 +49,11 @@ Ext.define('MyApp.controller.SchedulesController', {
         }
         var tournamentsStore = Ext.data.StoreManager.lookup('TournamentsStore');
         var tournament_url = tournamentsStore.getAt(tournament_record_index).get("tournament_url");
-        window.open(tournament_url + "?rho_open_target=_blank");
+        if (tournament_url.indexOf("?") > 0)
+        tournament_url += "&";
+        else
+        tournament_url += "?";
+        window.open(tournament_url + "rho_open_target=_blank");
     }
 
 });

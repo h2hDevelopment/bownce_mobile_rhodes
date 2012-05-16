@@ -25,6 +25,7 @@ Ext.define('MyApp.view.MyNavigationView', {
                 layout: {
                     type: 'vbox'
                 },
+                title: 'Welcome to Bownce',
                 items: [
                     {
                         xtype: 'panel',
