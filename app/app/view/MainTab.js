@@ -142,7 +142,17 @@ Ext.define('MyApp.view.MainTab', {
         ],
         tabBar: {
             docked: 'bottom'
-        }
+        },
+        listeners: [
+            {
+                fn: 'onMain_tabShow',
+                event: 'show'
+            }
+        ]
+    },
+
+    onMain_tabShow: function(component, options) {
+
     }
 
 });
