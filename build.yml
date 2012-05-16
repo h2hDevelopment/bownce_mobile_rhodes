@@ -1,0 +1,25 @@
+sdk: "/Users/karthik/workspace/rhodes-320b7"
+sdkversion: 3.2.0
+name: Bownce
+version: 1.0
+vendor: rhomobile
+build: debug
+bbver: 4.6
+wmsdk: "Windows Mobile 6 Professional SDK (ARMV4I)"
+applog: rholog.txt
+iphone:
+  configuration: Release
+  sdk: iphonesimulator5.1
+  provisionprofile:
+  codesignidentity:
+  entitlements:
+  BundleIdentifier: com.bownce.app
+  BundleURLScheme: bownce
+wp:
+  productid: 'ba1f32c0-80b1-012f-5b11-60c5470696ac'
+symbian:
+  uid: '0xe7285a85'
+android:
+  version: 2.1
+
+extensions: ["json", "another-extension"]
