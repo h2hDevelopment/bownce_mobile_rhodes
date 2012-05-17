@@ -28,6 +28,7 @@ Ext.define('MyApp.view.ScorePanel', {
             },
             {
                 xtype: 'panel',
+                height: 64,
                 layout: {
                     type: 'hbox'
                 },
@@ -45,7 +46,7 @@ Ext.define('MyApp.view.ScorePanel', {
                         html: 'Nike EYBL',
                         itemId: 'tournament_name',
                         margin: 20,
-                        style: 'text-align:center;color:darkblue;font-weight:bold;font-size:25px;',
+                        style: 'text-align:center;color:darkblue;font-weight:bold;font-size:22px;',
                         flex: 2
                     }
                 ]

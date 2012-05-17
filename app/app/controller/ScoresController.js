@@ -39,13 +39,15 @@ Ext.define('MyApp.controller.ScoresController', {
             divisionsStore.clearFilter();
             divisionsStore.filter("tournament_id", tournament.get("id"));
             var scorePanel = Ext.create("MyApp.view.ScorePanel");
-            scorePanel.down("#tournament_logo").setSrc(tournament.get('tournament_logo_small_url'));
+            scorePanel.down("#tournament_logo").setSrc(tournament.get('tournament_logo_small_url'));    
             scorePanel.down("#tournament_name").setHtml(tournament.get('tournament_name'));    
             scorePanel.down("#tournament_location").setHtml(tournament.get('tournament_location'));
             scorePanel.down("#tournament_dates").setHtml(tournament.get('tournament_dates'));
             var displayStore = this.createStoreForDisplay(divisionsStore);
             this.initializeGrid(scorePanel.down("#grid_panel"), displayStore);
-            this.getScorePages().add([scorePanel]);
+            if (displayStore.getCount() > 0) {
+                this.getScorePages().add([scorePanel]);
+            }
         }
     },
 
@@ -75,7 +77,7 @@ Ext.define('MyApp.controller.ScoresController', {
         var grid = Ext.create('Ext.ux.touch.grid.View', {
             width: '95%',
             height: 150,
-            margin: 10,
+            margin: "0 10 5 10",
             fullscreen : true,
             scrollable: true,
             store      : store,

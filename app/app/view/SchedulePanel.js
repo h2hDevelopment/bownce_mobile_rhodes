@@ -56,6 +56,10 @@ Ext.define('MyApp.view.SchedulePanel', {
                         xtype: 'label',
                         html: 'Aug 20 - 22',
                         itemId: 'tournament_dates'
+                    },
+                    {
+                        xtype: 'spacer',
+                        height: 5
                     }
                 ]
             }
