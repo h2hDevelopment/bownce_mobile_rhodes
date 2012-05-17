@@ -20,7 +20,7 @@ Ext.define('MyApp.store.SpotlightsStore', {
     ],
 
     config: {
-        autoLoad: true,
+        autoLoad: false,
         model: 'MyApp.model.Spotlight',
         storeId: 'SpotlightsStore',
         proxy: {

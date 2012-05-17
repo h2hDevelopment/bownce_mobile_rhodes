@@ -20,7 +20,7 @@ Ext.define('MyApp.store.DivisionsStore', {
     ],
 
     config: {
-        autoLoad: true,
+        autoLoad: false,
         model: 'MyApp.model.Division',
         storeId: 'DivisionsStore',
         proxy: {

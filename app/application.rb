@@ -13,4 +13,13 @@ class AppApplication < Rho::RhoApplication
     # SyncEngine::set_objectnotify_url("/app/Settings/sync_notify")
     # SyncEngine.set_notification(-1, "/app/Settings/sync_notify", '')
   end
+  
+  def on_activate_app
+  	if System.get_property("has_network") == false
+  		Alert.show_popup({:title => "Application requires Internet connection.  Please check your network settings.", 
+  		:callback => "/app/Main/exit_app", :buttons => ["OK"]})
+  	end
+  	WebView.execute_js("refresh_stores();")
+  end
+  
 end

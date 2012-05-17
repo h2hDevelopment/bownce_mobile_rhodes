@@ -36,3 +36,12 @@ Ext.apply(Ext.data.validations,{
 				}
 		}
 });
+
+function refresh_stores() {
+	var all_stores = ["Battles", "Tournaments", "Divisions", "Teams", "Spotlights"];
+	for(var i=0;i<all_stores.length;i++) {
+		var store = Ext.data.StoreManager.lookup(all_stores[i] + 'Store');
+		store.load();
+	}
+
+}

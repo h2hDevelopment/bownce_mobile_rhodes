@@ -31,24 +31,12 @@ Ext.define('MyApp.controller.ScoresController', {
     },
 
     onCarouselInitialize: function(component, options) {
+        var teamsStore = Ext.data.StoreManager.lookup('TeamsStore');
+        var divisionsStore = Ext.data.StoreManager.lookup('DivisionsStore');
         var tournamentsStore = Ext.data.StoreManager.lookup('TournamentsStore');
-        for(var i=0;i<tournamentsStore.getCount();i++) {
-            var tournament = tournamentsStore.getAt(i);
-            var divisionsStore = Ext.data.StoreManager.lookup('DivisionsStore');
-            if (divisionsStore.isFiltered())
-            divisionsStore.clearFilter();
-            divisionsStore.filter("tournament_id", tournament.get("id"));
-            var scorePanel = Ext.create("MyApp.view.ScorePanel");
-            scorePanel.down("#tournament_logo").setSrc(tournament.get('tournament_logo_small_url'));    
-            scorePanel.down("#tournament_name").setHtml(tournament.get('tournament_name'));    
-            scorePanel.down("#tournament_location").setHtml(tournament.get('tournament_location'));
-            scorePanel.down("#tournament_dates").setHtml(tournament.get('tournament_dates'));
-            var displayStore = this.createStoreForDisplay(divisionsStore);
-            this.initializeGrid(scorePanel.down("#grid_panel"), displayStore);
-            if (displayStore.getCount() > 0) {
-                this.getScorePages().add([scorePanel]);
-            }
-        }
+        teamsStore.load();
+        divisionsStore.load();
+        tournamentsStore.load();
     },
 
     onTournamentLinkTap: function(button, e, options) {
@@ -126,6 +114,34 @@ Ext.define('MyApp.controller.ScoresController', {
             }
         }
         return store;
+    },
+
+    refreshContents: function() {
+        var tournamentsStore = Ext.data.StoreManager.lookup('TournamentsStore');
+        this.getScorePages().removeAll();
+        for(var i=0;i<tournamentsStore.getCount();i++) {
+            var tournament = tournamentsStore.getAt(i);
+            var divisionsStore = Ext.data.StoreManager.lookup('DivisionsStore');
+            if (divisionsStore.isFiltered())
+            divisionsStore.clearFilter();
+            divisionsStore.filter("tournament_id", tournament.get("id"));
+            var scorePanel = Ext.create("MyApp.view.ScorePanel");
+            scorePanel.down("#tournament_logo").setSrc(tournament.get('tournament_logo_small_url'));    
+            scorePanel.down("#tournament_name").setHtml(tournament.get('tournament_name'));    
+            scorePanel.down("#tournament_location").setHtml(tournament.get('tournament_location'));
+            scorePanel.down("#tournament_dates").setHtml(tournament.get('tournament_dates'));
+            var displayStore = this.createStoreForDisplay(divisionsStore);
+            this.initializeGrid(scorePanel.down("#grid_panel"), displayStore);
+            if (displayStore.getCount() > 0) {
+                this.getScorePages().add([scorePanel]);
+                this.getScorePages().setActiveItem(0);        
+            }
+        }
+    },
+
+    launch: function() {
+        var tournamentsStore = Ext.data.StoreManager.lookup('TournamentsStore');
+        tournamentsStore.addAfterListener("load", this.refreshContents, this);
     }
 
 });

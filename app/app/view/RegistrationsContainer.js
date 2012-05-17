@@ -54,7 +54,7 @@ Ext.define('MyApp.view.RegistrationsContainer', {
                         xtype: 'checkboxfield',
                         style: 'font-size:11px',
                         width: 279,
-                        label: 'I hereby agree to the terms and conditions of Bownce.com',
+                        label: 'I hereby agree to the <a href="http://bownce.com/terms?rho_open_target=_blank">terms and conditions</a> of Bownce.',
                         labelAlign: 'right',
                         labelWidth: '90%',
                         labelWrap: true,

@@ -31,15 +31,7 @@ Ext.define('MyApp.controller.SchedulesController', {
     },
 
     onCarouselInitialize: function(component, options) {
-        var tournamentsStore = Ext.data.StoreManager.lookup('TournamentsStore');
-        for(i=0;i<tournamentsStore.getCount();i++) {
-            var schedulePanel = Ext.create("MyApp.view.SchedulePanel");
-            schedulePanel.down("#tournament_logo").setSrc(tournamentsStore.getAt(i).get('tournament_logo_url'));    
-            schedulePanel.down("#tournament_name").setHtml(tournamentsStore.getAt(i).get('tournament_name'));
-            schedulePanel.down("#tournament_location").setHtml(tournamentsStore.getAt(i).get('tournament_location'));
-            schedulePanel.down("#tournament_dates").setHtml(tournamentsStore.getAt(i).get('tournament_dates'));    
-            this.getSchedulePages().add([schedulePanel]);
-        }
+
     },
 
     onTournamentLinkTap: function(button, e, options) {
@@ -54,6 +46,25 @@ Ext.define('MyApp.controller.SchedulesController', {
         else
         tournament_url += "?";
         window.open(tournament_url + "rho_open_target=_blank");
+    },
+
+    refreshContents: function() {
+        var tournamentsStore = Ext.data.StoreManager.lookup('TournamentsStore');
+        this.getSchedulePages().removeAll();
+        for(i=0;i<tournamentsStore.getCount();i++) {
+            var schedulePanel = Ext.create("MyApp.view.SchedulePanel");
+            schedulePanel.down("#tournament_logo").setSrc(tournamentsStore.getAt(i).get('tournament_logo_url'));    
+            schedulePanel.down("#tournament_name").setHtml(tournamentsStore.getAt(i).get('tournament_name'));
+            schedulePanel.down("#tournament_location").setHtml(tournamentsStore.getAt(i).get('tournament_location'));
+            schedulePanel.down("#tournament_dates").setHtml(tournamentsStore.getAt(i).get('tournament_dates'));    
+            this.getSchedulePages().add([schedulePanel]);
+            this.getSchedulePages().setActiveItem(0);
+        }
+    },
+
+    launch: function() {
+        var tournamentsStore = Ext.data.StoreManager.lookup('TournamentsStore');
+        tournamentsStore.addAfterListener("load", this.refreshContents, this);
     }
 
 });

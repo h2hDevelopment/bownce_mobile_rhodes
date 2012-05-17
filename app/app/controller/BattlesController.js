@@ -34,20 +34,8 @@ Ext.define('MyApp.controller.BattlesController', {
     },
 
     onCarouselInitialize: function(component, options) {
-        var battleStore = Ext.data.StoreManager.lookup('BattlesStore');
-        for(i=0;i<battleStore.getCount();i++) {
-            var battlePanel = Ext.create("MyApp.view.BattlePanel");
-            battlePanel.down("#battle_id").setHtml("Round : " + battleStore.getAt(i).get("round_id") + " - Battle : " + battleStore.getAt(i).get("battle_id"));
-            battlePanel.down("#left_player_name").setHtml(battleStore.getAt(i).get("left_player_name"));
-            battlePanel.down("#right_player_name").setHtml(battleStore.getAt(i).get("right_player_name"));                
-            battlePanel.down("#left_player_description").setHtml(battleStore.getAt(i).get("left_player_description"));                    
-            battlePanel.down("#right_player_description").setHtml(battleStore.getAt(i).get("right_player_description"));                    
-            battlePanel.down("#left_player_vote_percent").setHtml(battleStore.getAt(i).get("left_player_vote_percent") + "%");                    
-            battlePanel.down("#right_player_vote_percent").setHtml(battleStore.getAt(i).get("right_player_vote_percent") + "%");                    
-            battlePanel.down("#left_player_image_url").setSrc(battleStore.getAt(i).get("left_player_image_url"));                    
-            battlePanel.down("#right_player_image_url").setSrc(battleStore.getAt(i).get("right_player_image_url"));                    
-            this.getBattlePages().add([battlePanel]);
-        }
+        var battlesStore = Ext.data.StoreManager.lookup('BattlesStore');
+        battlesStore.load();
     },
 
     onH2HLinkTap: function(button, e, options) {
@@ -56,6 +44,31 @@ Ext.define('MyApp.controller.BattlesController', {
 
     onSubmitVideoLinkTap: function(button, e, options) {
         window.open("http://h2h.bownce.com/static/submit_bownce_videos.html?rho_open_target=_blank");
+    },
+
+    refreshContents: function() {
+        var battlesStore = Ext.data.StoreManager.lookup('BattlesStore');
+        this.getBattlePages().removeAll();
+        for(i=0;i<battlesStore.getCount();i++) {
+            var battlePanel = Ext.create("MyApp.view.BattlePanel");
+            battlePanel.down("#battle_id").setHtml("Round : " + battlesStore.getAt(i).get("round_id") + " - Battle : " + battlesStore.getAt(i).get("battle_id"));
+            battlePanel.down("#left_player_name").setHtml(battlesStore.getAt(i).get("left_player_name"));
+            battlePanel.down("#right_player_name").setHtml(battlesStore.getAt(i).get("right_player_name"));                
+            battlePanel.down("#left_player_description").setHtml(battlesStore.getAt(i).get("left_player_description"));                    
+            battlePanel.down("#right_player_description").setHtml(battlesStore.getAt(i).get("right_player_description"));                    
+            battlePanel.down("#left_player_vote_percent").setHtml(battlesStore.getAt(i).get("left_player_vote_percent") + "%");                    
+            battlePanel.down("#right_player_vote_percent").setHtml(battlesStore.getAt(i).get("right_player_vote_percent") + "%");                    
+            battlePanel.down("#left_player_image_url").setSrc(battlesStore.getAt(i).get("left_player_image_url"));                    
+            battlePanel.down("#right_player_image_url").setSrc(battlesStore.getAt(i).get("right_player_image_url"));                    
+            this.getBattlePages().add([battlePanel]);
+            this.getBattlePages().setActiveItem(0);
+        }
+
+    },
+
+    launch: function() {
+        var battlesStore = Ext.data.StoreManager.lookup('BattlesStore');
+        battlesStore.addAfterListener("load", this.refreshContents, this);
     }
 
 });

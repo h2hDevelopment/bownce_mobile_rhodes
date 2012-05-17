@@ -20,7 +20,7 @@ Ext.define('MyApp.store.TournamentsStore', {
     ],
 
     config: {
-        autoLoad: true,
+        autoLoad: false,
         model: 'MyApp.model.Tournament',
         storeId: 'TournamentsStore',
         proxy: {

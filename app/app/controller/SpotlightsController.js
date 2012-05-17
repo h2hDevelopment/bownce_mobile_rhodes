@@ -32,16 +32,7 @@ Ext.define('MyApp.controller.SpotlightsController', {
 
     onCarouselInitialize: function(component, options) {
         var spotlightsStore = Ext.data.StoreManager.lookup('SpotlightsStore');
-        for(i=0;i<spotlightsStore.getCount();i++) {
-            var spotlightPanel = Ext.create("MyApp.view.SpotlightPanel");
-            spotlightPanel.down("#player_name").setHtml(spotlightsStore.getAt(i).get('player_name'));
-            spotlightPanel.down("#player_team").setHtml(spotlightsStore.getAt(i).get('player_team'));
-            spotlightPanel.down("#player_description").setHtml(spotlightsStore.getAt(i).get('player_description'));
-            spotlightPanel.down("#player_physique").setHtml(spotlightsStore.getAt(i).get('player_physique'));
-            spotlightPanel.down("#player_rank").setHtml(spotlightsStore.getAt(i).get('player_rank'));
-            spotlightPanel.down("#player_image_url").setSrc(spotlightsStore.getAt(i).get('player_image_url'));
-            this.getSpotlightPages().add([spotlightPanel]);
-        }
+        spotlightsStore.load();
     },
 
     onProfileLinkTap: function(button, e, options) {
@@ -56,6 +47,27 @@ Ext.define('MyApp.controller.SpotlightsController', {
         else
         url += "?";
         window.open(url + "rho_open_target=_blank");
+    },
+
+    refreshContents: function() {
+        var spotlightsStore = Ext.data.StoreManager.lookup('SpotlightsStore');
+        this.getSpotlightPages().removeAll();
+        for(i=0;i<spotlightsStore.getCount();i++) {
+            var spotlightPanel = Ext.create("MyApp.view.SpotlightPanel");
+            spotlightPanel.down("#player_name").setHtml(spotlightsStore.getAt(i).get('player_name'));
+            spotlightPanel.down("#player_team").setHtml(spotlightsStore.getAt(i).get('player_team'));
+            spotlightPanel.down("#player_description").setHtml(spotlightsStore.getAt(i).get('player_description'));
+            spotlightPanel.down("#player_physique").setHtml(spotlightsStore.getAt(i).get('player_physique'));
+            spotlightPanel.down("#player_rank").setHtml(spotlightsStore.getAt(i).get('player_rank'));
+            spotlightPanel.down("#player_image_url").setSrc(spotlightsStore.getAt(i).get('player_image_url'));
+            this.getSpotlightPages().add([spotlightPanel]);
+            this.getSpotlightPages().setActiveItem(0);    
+        }
+    },
+
+    launch: function() {
+        var spotlightsStore = Ext.data.StoreManager.lookup('SpotlightsStore');
+        spotlightsStore.addAfterListener("load", this.refreshContents, this);
     }
 
 });

@@ -20,7 +20,7 @@ Ext.define('MyApp.store.TeamsStore', {
     ],
 
     config: {
-        autoLoad: true,
+        autoLoad: false,
         model: 'MyApp.model.Team',
         storeId: 'TeamsStore',
         proxy: {
