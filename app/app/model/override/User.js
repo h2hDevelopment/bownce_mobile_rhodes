@@ -5,8 +5,8 @@ Ext.define('MyApp.model.override.User', {
         validations : [
             {
                 type: 'email',
-                field: 'email_id',
-                message: 'Email Id is not valid.'
+                field: 'email',
+                message: 'Email is not valid.'
             },
             {
                 type: 'length',
@@ -18,6 +18,11 @@ Ext.define('MyApp.model.override.User', {
             {   type : 'password', 
                 field: 'password', 
                 message: 'Password and Password Confirmation do not match.'
+            },
+            {
+                type : 'presence',
+                field : 'terms_flag',
+                message : 'Please accept terms & conditions.'
             }
         ]
     });
