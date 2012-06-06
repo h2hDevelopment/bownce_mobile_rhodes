@@ -127,7 +127,7 @@ Ext.define('MyApp.view.MainTab', {
                         height: 51,
                         margin: 2,
                         width: 144,
-                        src: './images/bownce_logo_small.png'
+                        src: './images/BownceH2H-v2-logo-small.png'
                     },
                     {
                         xtype: 'button',

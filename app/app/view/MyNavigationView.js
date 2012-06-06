@@ -43,7 +43,7 @@ Ext.define('MyApp.view.MyNavigationView', {
                                 xtype: 'image',
                                 height: 95,
                                 width: 271,
-                                src: './images/bownce_logo.png'
+                                src: './images/BownceH2H-v2-logo.png'
                             }
                         ]
                     },
