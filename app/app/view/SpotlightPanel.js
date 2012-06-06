@@ -26,7 +26,7 @@ Ext.define('MyApp.view.SpotlightPanel', {
                 xtype: 'panel',
                 height: 323,
                 margin: '5 0 0 0 ',
-                style: 'background-color:lightyellow;border:2px solid gray;border-radius:20px;text-align:center;color:gray;font-weight:bold;font-size:12px;',
+                style: 'background-color:#FFFFFF;border:2px solid #fCb040;border-radius:20px;text-align:center;color:gray;font-weight:bold;font-size:12px;',
                 width: 307,
                 layout: {
                     align: 'center',
@@ -39,7 +39,7 @@ Ext.define('MyApp.view.SpotlightPanel', {
                         docked: 'top',
                         html: 'Rasheed Sulaimon',
                         itemId: 'player_name',
-                        style: 'color:darkblue;font-size:20px;'
+                        style: 'color:#002b54;font-size:20px;'
                     },
                     {
                         xtype: 'label',

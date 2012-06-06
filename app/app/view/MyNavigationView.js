@@ -52,7 +52,7 @@ Ext.define('MyApp.view.MyNavigationView', {
                         height: 177,
                         html: 'Connect Instantly',
                         margin: '0 20 0 20',
-                        style: 'text-align:center;color:darkblue;font-weight:bold;font-size:22px;',
+                        style: 'text-align:center;color:#002b54;font-weight:bold;font-size:22px;',
                         layout: {
                             type: 'vbox'
                         },

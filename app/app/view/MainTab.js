@@ -46,7 +46,7 @@ Ext.define('MyApp.view.MainTab', {
                         id: 'h2h_link',
                         margin: 10,
                         ui: 'action',
-                        text: 'Watch Videos & More'
+                        text: 'Watch Videos & Vote'
                     }
                 ]
             },

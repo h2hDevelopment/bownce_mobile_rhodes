@@ -27,7 +27,7 @@ Ext.define('MyApp.view.SchedulePanel', {
                 xtype: 'label',
                 html: 'Tournament Name',
                 itemId: 'tournament_name',
-                style: 'text-align:center;color:darkblue;font-weight:bold;font-size:22px;'
+                style: 'text-align:center;color:#002b54;font-weight:bold;font-size:22px;'
             },
             {
                 xtype: 'panel',

@@ -29,14 +29,14 @@ Ext.define('MyApp.view.BattlePanel', {
                 html: 'Round #1 : Battle #2',
                 itemId: 'battle_id',
                 margin: 10,
-                style: 'text-align:center;color:darkblue;font-weight:bold;font-size:25px;'
+                style: 'text-align:center;color:#002b54;font-weight:bold;font-size:25px;'
             },
             {
                 xtype: 'panel',
                 docked: 'top',
                 margin: '0 3 0 3',
                 minWidth: '95%',
-                style: 'background-color:lightyellow;border:2px solid gray;border-radius:20px;',
+                style: 'background-color:#FFFFFF;border:2px solid #fCb040;border-radius:20px;',
                 layout: {
                     type: 'vbox'
                 },
