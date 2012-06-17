@@ -67,7 +67,7 @@ Ext.define('MyApp.controller.UsersController', {
         user.set("terms_flag", values.terms_flag);
         var errors = user.validate();
         if (user.isValid() === false) {
-            var message = "Please correct the following errors :<br/>";
+            var message = "Please correct the following errors:<br/>";
             var ctr = 1;
             errors.each(function (err) {
                 message += ctr++ + ". " + err.getMessage() + '<br/>';

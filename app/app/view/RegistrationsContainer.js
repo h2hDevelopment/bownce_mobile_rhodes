@@ -37,14 +37,14 @@ Ext.define('MyApp.view.RegistrationsContainer', {
                         label: 'Password',
                         labelAlign: 'top',
                         name: 'password',
-                        placeHolder: 'Minimum of 8 characters'
+                        placeHolder: 'Minimum of 6 characters'
                     },
                     {
                         xtype: 'passwordfield',
                         label: 'Confirm Password',
                         labelAlign: 'top',
                         name: 'password_confirmation',
-                        placeHolder: 'Minimum of 8 characters'
+                        placeHolder: 'Minimum of 6 characters'
                     },
                     {
                         xtype: 'spacer',

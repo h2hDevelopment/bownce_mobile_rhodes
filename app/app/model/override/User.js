@@ -11,9 +11,8 @@ Ext.define('MyApp.model.override.User', {
             {
                 type: 'length',
                 field: 'password',
-                max: 8,
-                min: 4,
-                message: 'Password should be 4 to 8 characters.'
+                min: 6,
+                message: 'Password should be atleast 6 characters in length.'
             },
             {   type : 'password', 
                 field: 'password', 

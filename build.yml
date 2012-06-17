@@ -1,7 +1,7 @@
 sdk: "/Users/karthik/workspace/rhodes-320b7"
 sdkversion: 3.2.0
 name: Bownce H2H
-version: 1.1
+version: 1.2
 vendor: H2H Media LLC
 build: debug
 bbver: 4.6

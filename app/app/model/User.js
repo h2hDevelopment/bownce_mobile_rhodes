@@ -29,24 +29,6 @@ Ext.define('MyApp.model.User', {
             {
                 name: 'terms_flag'
             }
-        ],
-        validations: [
-            {
-                type: 'email',
-                field: 'email',
-                message: 'Email is not valid.'
-            },
-            {
-                type: 'length',
-                field: 'password',
-                max: 8,
-                min: 6,
-                message: 'Password should be 4 to 8 characters.'
-            },
-            {
-                type: 'presence',
-                field: 'terms_flag'
-            }
         ]
     }
 });
