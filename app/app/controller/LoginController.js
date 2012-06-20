@@ -72,7 +72,7 @@ Ext.define('MyApp.controller.LoginController', {
                 Ext.Msg.alert("Failure", result.error);
                 else {
                     //            Ext.Msg.alert("Success", "Login Success!", function() {
-                    refresh_stores(function() {
+                    refreshDataIfRequired(function() {
                         if (!me.mainTab) {
                             me.mainTab = Ext.create('MyApp.view.MainTab', {title: "H2H"});
                         }

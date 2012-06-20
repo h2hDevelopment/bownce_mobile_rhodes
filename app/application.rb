@@ -19,7 +19,7 @@ class AppApplication < Rho::RhoApplication
   		Alert.show_popup({:title => "Application requires Internet connection.  Please check your network settings.", 
   		:callback => "/app/Main/exit_app", :buttons => ["OK"]})
   	end
-  	WebView.execute_js("refresh_stores();")
+  	WebView.execute_js("refreshDataIfRequired();")
   end
   
 end

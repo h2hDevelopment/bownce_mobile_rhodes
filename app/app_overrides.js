@@ -39,6 +39,7 @@ Ext.apply(Ext.data.validations,{
 
 timer = null;
 callback_function = null;
+data_version = null;
 
 function checkIfStoresLoaded() {
 	var all_stores = ["Battles", "Teams", "Divisions", "Tournaments" , "Spotlights"];
@@ -59,6 +60,20 @@ function checkIfStoresLoaded() {
 	return true;
 }
 
+function refreshDataIfRequired(callback_func) {
+		Ext.data.JsonP.request({
+      url: 'http://app.bownce.com/version',
+			callbackKey: 'callback',
+			success: function(result) {
+				if(data_version != result.version) {
+					data_version = result.version;
+					refresh_stores(callback_func);
+				}
+			},
+			failure: function(result) {
+			}
+	});
+}
 
 function refresh_stores(callback_func) {
 	Ext.Viewport.setMasked({
