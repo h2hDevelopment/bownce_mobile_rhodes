@@ -41,12 +41,9 @@ Ext.define('MyApp.controller.UsersController', {
     },
 
     onRegisterButtonTap: function(button, e, options) {
-        var me = this;
-        if (!me.register) {
-            me.register = Ext.create('MyApp.view.RegistrationsContainer', {
-            title: 'Register' });
-        }
-        this.getNavView().push(me.register);
+        var register = Ext.create('MyApp.view.RegistrationsContainer', {
+        title: 'Register' });
+        this.getNavView().push(register);
 
     },
 

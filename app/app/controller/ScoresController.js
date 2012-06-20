@@ -21,22 +21,10 @@ Ext.define('MyApp.controller.ScoresController', {
         },
 
         control: {
-            "#score_pages": {
-                initialize: 'onCarouselInitialize'
-            },
             "#score_tournament_link": {
                 tap: 'onTournamentLinkTap'
             }
         }
-    },
-
-    onCarouselInitialize: function(component, options) {
-        var teamsStore = Ext.data.StoreManager.lookup('TeamsStore');
-        var divisionsStore = Ext.data.StoreManager.lookup('DivisionsStore');
-        var tournamentsStore = Ext.data.StoreManager.lookup('TournamentsStore');
-        teamsStore.load();
-        divisionsStore.load();
-        tournamentsStore.load();
     },
 
     onTournamentLinkTap: function(button, e, options) {
@@ -139,9 +127,15 @@ Ext.define('MyApp.controller.ScoresController', {
         }
     },
 
-    launch: function() {
-        var tournamentsStore = Ext.data.StoreManager.lookup('TournamentsStore');
-        tournamentsStore.addAfterListener("load", this.refreshContents, this);
+    loadDivisionsData: function() {
+        alert("loading Divisions");
+        var divisionsStore = Ext.data.StoreManager.lookup('DivisionsStore');
+        divisionsStore.load();
+    },
+
+    loadTeamsData: function() {
+        var teamsStore = Ext.data.StoreManager.lookup('TeamsStore');
+        teamsStore.load();
     }
 
 });

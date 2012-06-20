@@ -37,11 +37,42 @@ Ext.apply(Ext.data.validations,{
 		}
 });
 
-function refresh_stores() {
+timer = null;
+callback_function = null;
+
+function checkIfStoresLoaded() {
 	var all_stores = ["Battles", "Teams", "Divisions", "Tournaments" , "Spotlights"];
 	for(var i=0;i<all_stores.length;i++) {
 		var store = Ext.data.StoreManager.lookup(all_stores[i] + 'Store');
+		if (store.isLoaded() == false) {
+			return false;
+		}
+	}
+	clearInterval(timer);
+	if (callback_function)
+		callback_function();
+	MyApp.app.getController("BattlesController").refreshContents()
+	MyApp.app.getController("ScoresController").refreshContents()
+	MyApp.app.getController("SchedulesController").refreshContents()
+	MyApp.app.getController("SpotlightsController").refreshContents()	
+	Ext.Viewport.setMasked(false);
+	return true;
+}
+
+
+function refresh_stores(callback_func) {
+	Ext.Viewport.setMasked({
+			xtype: 'loadmask',
+			message: 'Refreshing data...'
+	});
+	callback_function = callback_func;
+	timer = setInterval("checkIfStoresLoaded()", 100);
+	var all_stores = ["Battles", "Teams", "Divisions", "Tournaments" , "Spotlights"];
+	for(var i=0;i<all_stores.length;i++) {
+		var store = Ext.data.StoreManager.lookup(all_stores[i] + 'Store');
+		store.loaded = false;
 		store.load();
 	}
-
+	
 }
+

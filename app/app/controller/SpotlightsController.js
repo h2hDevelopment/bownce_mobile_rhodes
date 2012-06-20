@@ -18,35 +18,7 @@ Ext.define('MyApp.controller.SpotlightsController', {
     config: {
         refs: {
             spotlightPages: '#spotlight_pages'
-        },
-
-        control: {
-            "#spotlight_pages": {
-                initialize: 'onCarouselInitialize'
-            },
-            "#profile_link": {
-                tap: 'onProfileLinkTap'
-            }
         }
-    },
-
-    onCarouselInitialize: function(component, options) {
-        var spotlightsStore = Ext.data.StoreManager.lookup('SpotlightsStore');
-        spotlightsStore.load();
-    },
-
-    onProfileLinkTap: function(button, e, options) {
-        var record_index = this.getSpotlightPages().getActiveIndex();
-        if (record_index < 0) {
-            return;
-        }
-        var spotlightsStore = Ext.data.StoreManager.lookup('SpotlightsStore');
-        var url = spotlightsStore.getAt(record_index).get("player_profile_url");
-        if (url.indexOf("?") > 0)
-        url += "&";
-        else
-        url += "?";
-        window.open(url + "rho_open_target=_blank");
     },
 
     refreshContents: function() {
@@ -60,14 +32,24 @@ Ext.define('MyApp.controller.SpotlightsController', {
             spotlightPanel.down("#player_physique").setHtml(spotlightsStore.getAt(i).get('player_physique'));
             spotlightPanel.down("#player_rank").setHtml(spotlightsStore.getAt(i).get('player_rank'));
             spotlightPanel.down("#player_image_url").setSrc(spotlightsStore.getAt(i).get('player_image_url'));
+            spotlightPanel.down("#profile_link").on("tap", this.onProfileLinkTapped, this);
             this.getSpotlightPages().add([spotlightPanel]);
             this.getSpotlightPages().setActiveItem(0);    
         }
     },
 
-    launch: function() {
+    onProfileLinkTapped: function() {
+        var record_index = this.getSpotlightPages().getActiveIndex();
+        if (record_index < 0) {
+            return;
+        }
         var spotlightsStore = Ext.data.StoreManager.lookup('SpotlightsStore');
-        spotlightsStore.addAfterListener("load", this.refreshContents, this);
+        var url = spotlightsStore.getAt(record_index).get("player_profile_url");
+        if (url.indexOf("?") > 0)
+        url += "&";
+        else
+        url += "?";
+        window.open(url + "rho_open_target=_blank");
     }
 
 });

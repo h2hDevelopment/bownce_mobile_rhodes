@@ -24,7 +24,7 @@ Ext.define('MyApp.controller.MainController', {
     },
 
     onBownceLinkTap: function(button, e, options) {
-        window.open("http://app.bownce.com?rho_open_target=_blank");
+        window.open("http://bownce.com?rho_open_target=_blank");
     }
 
 });

@@ -35,12 +35,9 @@ Ext.define('MyApp.controller.LoginController', {
     },
 
     onLoginButtonTap: function(button, e, options) {
-        var me = this;
-        if (!me.login) {
-            me.login = Ext.create('MyApp.view.LoginContainer', {
-            title: 'Login' });
-        }
-        this.getNavView().push(me.login);
+        var login = Ext.create('MyApp.view.LoginContainer', {
+        title: 'Login' });
+        this.getNavView().push(login);
 
 
     },
@@ -75,11 +72,13 @@ Ext.define('MyApp.controller.LoginController', {
                 Ext.Msg.alert("Failure", result.error);
                 else {
                     //            Ext.Msg.alert("Success", "Login Success!", function() {
-                    if (!me.mainTab) {
-                        me.mainTab = Ext.create('MyApp.view.MainTab', {title: "H2H"});
-                    }
-                    me.getNavView().push(me.mainTab);
-                    me.getNavView().getNavigationBar().setHeight(0);
+                    refresh_stores(function() {
+                        if (!me.mainTab) {
+                            me.mainTab = Ext.create('MyApp.view.MainTab', {title: "H2H"});
+                        }
+                        me.getNavView().push(me.mainTab);
+                        me.getNavView().getNavigationBar().setHeight(0);
+                    });
                     //            });
                 }
             },

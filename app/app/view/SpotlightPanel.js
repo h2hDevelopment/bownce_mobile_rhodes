@@ -77,7 +77,9 @@ Ext.define('MyApp.view.SpotlightPanel', {
                     },
                     {
                         xtype: 'button',
+                        cls: 'pr_link',
                         id: 'profile_link',
+                        itemId: 'mybutton10',
                         margin: '0 0 5 0',
                         style: 'font-style:italic;font-weight:lighter',
                         ui: 'action-round',

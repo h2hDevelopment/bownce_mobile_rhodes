@@ -145,6 +145,7 @@ Ext.define('MyApp.view.BattlePanel', {
                                 html: '60%',
                                 itemId: 'left_player_vote_percent',
                                 margin: '3 10 0 10',
+                                style: 'color:#fCb040;',
                                 flex: 1
                             },
                             {
@@ -153,6 +154,7 @@ Ext.define('MyApp.view.BattlePanel', {
                                 html: '40%',
                                 itemId: 'right_player_vote_percent',
                                 margin: '3 10 0 10',
+                                style: 'color:#fCb040;',
                                 flex: 1
                             }
                         ]

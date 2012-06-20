@@ -21,9 +21,6 @@ Ext.define('MyApp.controller.BattlesController', {
         },
 
         control: {
-            "#battle_pages": {
-                initialize: 'onCarouselInitialize'
-            },
             "#h2h_link": {
                 tap: 'onH2HLinkTap'
             },
@@ -31,11 +28,6 @@ Ext.define('MyApp.controller.BattlesController', {
                 tap: 'onSubmitVideoLinkTap'
             }
         }
-    },
-
-    onCarouselInitialize: function(component, options) {
-        var battlesStore = Ext.data.StoreManager.lookup('BattlesStore');
-        battlesStore.load();
     },
 
     onH2HLinkTap: function(button, e, options) {
@@ -64,11 +56,6 @@ Ext.define('MyApp.controller.BattlesController', {
             this.getBattlePages().setActiveItem(0);
         }
 
-    },
-
-    launch: function() {
-        var battlesStore = Ext.data.StoreManager.lookup('BattlesStore');
-        battlesStore.addAfterListener("load", this.refreshContents, this);
     }
 
 });

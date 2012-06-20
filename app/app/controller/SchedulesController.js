@@ -21,17 +21,10 @@ Ext.define('MyApp.controller.SchedulesController', {
         },
 
         control: {
-            "#schedule_pages": {
-                initialize: 'onCarouselInitialize'
-            },
             "#schedule_tournament_link": {
                 tap: 'onTournamentLinkTap'
             }
         }
-    },
-
-    onCarouselInitialize: function(component, options) {
-
     },
 
     onTournamentLinkTap: function(button, e, options) {
@@ -60,11 +53,6 @@ Ext.define('MyApp.controller.SchedulesController', {
             this.getSchedulePages().add([schedulePanel]);
             this.getSchedulePages().setActiveItem(0);
         }
-    },
-
-    launch: function() {
-        var tournamentsStore = Ext.data.StoreManager.lookup('TournamentsStore');
-        tournamentsStore.addAfterListener("load", this.refreshContents, this);
     }
 
 });
